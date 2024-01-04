@@ -117,6 +117,7 @@ const App : React.FC = () => {
 
     return (
         <ConfigProvider
+            // @ts-ignore
             theme={theme}>
             <Layout>
                 <Affix>

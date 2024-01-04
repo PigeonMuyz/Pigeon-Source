@@ -73,12 +73,12 @@ const CustomCard: React.FC<CustomCardProps> = ({ title, urls, origin }) => (
 );
 
 const HomePage : React.FC = () =>{
-    // @ts-ignore
     return(
         <Flex justify={"center"} align={"start"} wrap="wrap">
             {starfolder.map((item, index) => (
                 <CustomCard key={index}
                             title={item.title}
+                            // @ts-ignore
                             urls={item.urls}
                             origin={origin}/>
             ))}

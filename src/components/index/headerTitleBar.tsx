@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import {Select, Button, Flex, Image, Menu, Space, MenuProps, message, ConfigProvider} from "antd";
 import { SiGithub, SiGitea } from "react-icons/si";
+import { theme } from 'antd';
+
+const { useToken } = theme;
 import {
     CompassTwoTone,
     CopyTwoTone,
@@ -12,40 +15,42 @@ import {
 import {useLocation} from "@@/exports";
 
 const headerTitleBar = () => {
+    const { token } = useToken();
     let menuItem = [
         {
             key: "index",
             label: "首页",
-            icon: <HomeTwoTone />
+            icon: <HomeTwoTone twoToneColor={token.colorPrimary}/>
         },
         {
             key: "jx3search",
             label: "剑三查询",
-            icon: <CompassTwoTone />
+            icon: <CompassTwoTone twoToneColor={token.colorPrimary}/>
         },
         {
             key: "music",
             label: "音乐",
-            icon: <CustomerServiceTwoTone />
+            icon: <CustomerServiceTwoTone twoToneColor={token.colorPrimary}/>
         },
         {
             key: "video",
             label: "视频",
-            icon: <VideoCameraTwoTone />
+            icon: <VideoCameraTwoTone twoToneColor={token.colorPrimary}/>
         },
         {
             key: "blog",
             label: "博客",
-            icon: <CopyTwoTone />
+            icon: <CopyTwoTone twoToneColor={token.colorPrimary}/>
         },
         {
             key: "help",
             label: "帮助",
-            icon: <QuestionCircleTwoTone />
+            icon: <QuestionCircleTwoTone twoToneColor={token.colorPrimary}/>
         }
     ]
     const [menuSelect, setMenuSelect] = useState('index');
     const location = useLocation();
+
     const onClick: MenuProps['onClick'] = (e) => {
         switch (e.key){
             case "index":
