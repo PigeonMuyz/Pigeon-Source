@@ -6,7 +6,8 @@ WORKDIR /usr/src/app
 
 # 复制 package.json 和 package-lock.json 文件，优先安装依赖以提高构建速度
 COPY package*.json ./
-RUN npm install
+RUN npm install pnpm --save
+RUN pnpm install
 
 # 复制所有项目文件到工作目录
 COPY . .
