@@ -11,6 +11,7 @@
   "dependencies": {
     "@ant-design/charts": "^2.0.3",
     "@ant-design/icons": "^5.2.6",
+    "@ant-design/pro-layout": "^7.17.16",
     "antd": "^5.12.7",
     "axios": "^1.6.3",
     "copy-to-clipboard": "^3.3.3",

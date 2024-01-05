@@ -1,120 +1,134 @@
 import { Link, Outlet, useLocation } from 'umi';
 import {Button, ConfigProvider, Layout, Menu, MenuProps, Space, Image, message, Affix, theme, Select, Flex} from 'antd';
 import FooterBar from "@/components/index/footerBar";
-import HeaderTitleBar from "@/components/index/headerTitleBar";
 import {SiGitea, SiGithub} from "react-icons/si";
-import React, {useState} from "react";
-import {jxerThemes} from "@/config";
-
+import React, {useEffect, useState} from "react";
+import {jxerThemes,themeSelect} from "@/config";
+import logo from '@/assets/logo.png'
+import {
+    CompassTwoTone,
+    CopyTwoTone,
+    CustomerServiceTwoTone,
+    HomeTwoTone,
+    QuestionCircleTwoTone,
+    VideoCameraTwoTone
+} from "@ant-design/icons";
 const { Header, Content, Footer } = Layout;
+const { useToken } = theme;
 
 const App : React.FC = () => {
+    const themes = jxerThemes;
+    const [theme, setTheme] = useState(themes[0].theme);
+    const [selectValue, setSelectValue] = useState('changg');
+    const { token } = useToken();
+    const [menuSelect, setMenuSelect] = useState('index');
 
-    const defaultLayoutStyle = { height: '97vh', width: '97vh' };
-    const defaultContentStyle = {width: '97vh'};
-    const theme1 = jxerThemes[0].theme;
-    const theme2 ={
-        // algorithm: theme.darkAlgorithm,
-        components: {
-            Layout: {
-                // bodyBg: "#ffffff",
-                headerBg: "#FFFFFF",
-                // footerBg: "#FFFFFF",
+    const [collapsed, setCollapsed] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.matchMedia("only screen and (max-width: 760px)").matches);
+
+    useEffect(() => {
+        const handler = () => setIsMobile(window.matchMedia("only screen and (max-width: 760px)").matches);
+        window.addEventListener('resize', handler);
+        return () => window.removeEventListener('resize', handler);
+    }, []);
+
+    useEffect(() => {
+        // 在小屏幕上自动折叠
+        // setCollapsed(isMobile);
+        if (isMobile){
+            message['info']("推荐切换到电脑端或者电脑模式体验完整功能",2)
+        }
+    }, [isMobile]);
+
+    useEffect(() => {
+        const storedThemeKey = localStorage.getItem("defaultTheme");
+        if (storedThemeKey) {
+            const foundObject = themes.find(item => item.key === storedThemeKey);
+            if (foundObject) {
+                setTheme(foundObject.theme);
+                setSelectValue(storedThemeKey); // 更新Select的值
+            } else {
+                // 如果没有找到匹配的主题，则使用默认主题
+                setTheme(themes[0].theme);
             }
         }
-        ,token: {
-            colorPrimary: "#911721",
-            colorInfo: "#911721",
-            borderRadius: 10,
-            colorError: "#fd7d7e",
-            colorSuccess: "#7adf47",
-            colorWarning: "#ecbe67",
-            fontSize: 15,
-        }};
-    const [theme, setTheme] = useState(theme1)
-    let options=[
+    }, [themes]);
+    let options=themeSelect;
+    let menuItem = [
         {
-            value: 'changg',
-            label: '鸽子绿',
-            disabled: false,
+            key: "index",
+            label: "首页",
+            // @ts-ignore
+            icon: <HomeTwoTone twoToneColor={theme.token.colorPrimary}/>
         },
         {
-            value: 'tianc',
-            label: '二哈红',
-            disabled: false,
+            key: "jx3search",
+            label: "剑三查询",
+            // @ts-ignore
+            icon: <CompassTwoTone twoToneColor={theme.token.colorPrimary}/>
         },
         {
-            value: 'pengl',
-            label: '鸟人灰',
-            disabled: true,
+            key: "music",
+            label: "音乐",
+            // @ts-ignore
+            icon: <CustomerServiceTwoTone twoToneColor={theme.token.colorPrimary}/>
         },
         {
-            value: 'wanh',
-            label: '骚话紫',
-            disabled: true,
+            key: "video",
+            label: "视频",
+            // @ts-ignore
+            icon: <VideoCameraTwoTone twoToneColor={theme.token.colorPrimary}/>
         },
         {
-            value: 'chuny',
-            label: '咩咩蓝',
-            disabled: true,
+            key: "blog",
+            label: "博客",
+            // @ts-ignore
+            icon: <CopyTwoTone twoToneColor={theme.token.colorPrimary}/>
         },
         {
-            value: 'shaol',
-            label: '秃子黄',
-            disabled: true,
-        },
-        {
-            value: 'qixiu',
-            label: '兔兔粉',
-            disabled: true,
-        },
-        {
-            value: 'wudu',
-            label: '蛇哥紫',
-            disabled: true,
-        },
-        {
-            value: 'gaib',
-            label: '天狗黄',
-            disabled: true,
-        },
-        {
-            value: 'lingx',
-            label: '野猪红',
-            disabled: true,
-        },
-        {
-            value: 'yant',
-            label: '算卦紫',
-            disabled: true,
-        },
-        {
-            value: 'yaoz',
-            label: '狍子绿',
-            disabled: true,
-        },
-        {
-            value: 'tang',
-            label: '熊猫蓝',
-            disabled: true,
-        },
-        {
-            value: 'cangy',
-            label: '王八黄',
-            disabled: false,
-        },
-    ];
+            key: "help",
+            label: "帮助",
+            // @ts-ignore
+            icon: <QuestionCircleTwoTone twoToneColor={theme.token.colorPrimary}/>
+        }
+    ]
+    const location = useLocation();
     let buttonStyle = { paddingLeft: 7, paddingRight: 7 };
     let iconStyle = { marginTop: 1, fontSize: 18 };
 
     function themeChanged(value: any, option: any) {
-        if (value === 'tianc'){
-            setTheme(theme2);
-        }else{
-            setTheme(theme1)
-        }
+        const foundObject: any = jxerThemes.find(item => item.key === value) || jxerThemes[0];
+        localStorage.setItem("defaultTheme", value);
+        setTheme(foundObject.theme);
+        setSelectValue(value); // 更新Select的值
     }
-
+    const onClick: MenuProps['onClick'] = (e) => {
+        switch (e.key){
+            case "index":
+                break;
+            case "jx3search":
+                message["info"]("即将到来",2);
+                setMenuSelect("index");
+                break;
+            case "music":
+                message["info"]("即将到来",2);
+                setMenuSelect("index");
+                break;
+            case "video":
+                message["info"]("即将到来",2);
+                setMenuSelect("index");
+                break;
+            case "blog":
+                message["info"]("即将到来",2);
+                setMenuSelect("index");
+                break;
+            case "help":
+                message["info"]("即将到来",2);
+                setMenuSelect("index");
+                break;
+        }
+        // setMenuSelect(e.key);
+    };
     return (
         <ConfigProvider
             // @ts-ignore
@@ -122,11 +136,30 @@ const App : React.FC = () => {
             <Layout>
                 <Affix>
                     <Header style={{width: '100%', display: 'flex', alignItems: 'center'}}>
-                        <HeaderTitleBar/>
-                        <Flex justify={'start'} gap={'small'} style={{ marginLeft: '40vh' }}>
-                            <Select options={options} style={{ width: 100  }} onChange={(value, option) => themeChanged(value,option)} defaultValue={'changg'}/>
-                            <Button style={buttonStyle} ><SiGithub style={iconStyle}/></Button>
-                            <Button style={buttonStyle} ><SiGitea style={iconStyle}/></Button>
+                        {isMobile ? null :
+                            (
+                                <Space align={'center'} size={100}>
+                                    <div className={'logo'} style={{ marginLeft: 30 }}>
+                                        <Image
+                                            width={70}
+                                            height={50}
+                                            src={logo}
+                                        />
+                                    </div>
+                                    <Menu
+                                        mode={'horizontal'}
+                                        selectedKeys={[menuSelect]}
+                                        items={menuItem}
+                                        onClick={onClick}
+                                        inlineCollapsed={collapsed}
+                                    />
+                                </Space>
+                            )
+                        }
+                        <Flex justify={'start'} gap={'small'} style={{ marginLeft: 'auto' }}>
+                            <Select value={selectValue} options={options} style={{ width: 100  }} onChange={(value, option) => themeChanged(value,option)} defaultValue={'changg'}/>
+                            <Button style={buttonStyle} href={'https://github.com/pigeonmuyz'}><SiGithub style={iconStyle}/></Button>
+                            {/*<Button style={buttonStyle} ><SiGitea style={iconStyle}/></Button>*/}
                         </Flex>
                     </Header>
                 </Affix>

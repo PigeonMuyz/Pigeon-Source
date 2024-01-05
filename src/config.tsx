@@ -106,7 +106,7 @@ export const starfolder = [
             },
             {
                 title: "Redis Manager",
-                comments: "Pigeon自建的代码仓库",
+                comments: "内部Redis网页管理端",
                 icon: <SiRedis style={{ fontSize: 40 }}/>,
                 urls:[
                     {
@@ -336,59 +336,428 @@ export const jxerThemes = [
             }}
     },
     {
-        key: "aaa",
+        key: "tianc",
         theme:{
-            components: ""
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#911721",
+                colorInfo: "#911721",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
         }
     },
-
     {
-        key: "a",
+        key: "pengl",
         theme:{
-            components: ""
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#828282",
+                colorInfo: "#828282",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
         }
     },
-
     {
-        key: "aa",
+        key: "wanh",
         theme:{
-            components: ""
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#8c1282",
+                colorInfo: "#8c1282",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
         }
     },
-
     {
-        key: "b",
+        key: "chuny",
         theme:{
-            components: ""
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#329acf",
+                colorInfo: "#329acf",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
         }
     },
-
     {
-        key: "bb",
+        key: "shaol",
         theme:{
-            components: ""
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#cf7300",
+                colorInfo: "#cf7300",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
         }
     },
-
     {
-        key: "bbb",
+        key: "qixiu",
         theme:{
-            components: ""
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#d43353",
+                colorInfo: "#d43353",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
         }
     },
-
     {
-        key: "bbbb",
+        key: "wudu",
         theme:{
-            components: ""
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#422599",
+                colorInfo: "#422599",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
         }
     },
-
     {
-        key: "bbaa",
+        key: "gaib",
         theme:{
-            components: ""
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#d96518",
+                colorInfo: "#d96518",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
+        }
+    },
+    {
+        key: "lingx",
+        theme:{
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#9e0d11",
+                colorInfo: "#9e0d11",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
+        }
+    },
+    {
+        key: "yant",
+        theme:{
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#3a0091",
+                colorInfo: "#3a0091",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
+        }
+    },
+    {
+        key: "yaoz",
+        theme:{
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#29a37e",
+                colorInfo: "#29a37e",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
+        }
+    },
+    {
+        key: "tang",
+        theme:{
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#253b94",
+                colorInfo: "#253b94",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
+        }
+    },
+    {
+        key: "cangy",
+        theme:{
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#800911",
+                colorInfo: "#800911",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
+        }
+    },
+    {
+        key: "badao",
+        theme:{
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#2b22a8",
+                colorInfo: "#2b22a8",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
+        }
+    },
+    {
+        key: "daoz",
+        theme:{
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#1c408a",
+                colorInfo: "#1c408a",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
+        }
+    },
+    {
+        key: "wanling",
+        theme:{
+            components: {
+                Layout: {
+                    // bodyBg: "#ffffff",
+                    headerBg: "#FFFFFF",
+                    // footerBg: "#FFFFFF",
+                }
+            }
+            ,token: {
+                colorPrimary: "#d19200",
+                colorInfo: "#d19200",
+                borderRadius: 10,
+                colorError: "#fd7d7e",
+                colorSuccess: "#7adf47",
+                colorWarning: "#ecbe67",
+                fontSize: 15,
+            }
         }
     },
 ];
 
+// 主题选择器
+export const themeSelect = [
+    {
+        value: 'changg',
+        label: '鸽子绿',
+        disabled: false,
+    },
+    {
+        value: 'tianc',
+        label: '二哈红',
+        disabled: false,
+    },
+    {
+        value: 'pengl',
+        label: '鸟人灰',
+        disabled: false,
+    },
+    {
+        value: 'wanh',
+        label: '骚话紫',
+        disabled: false,
+    },
+    {
+        value: 'chuny',
+        label: '咩咩蓝',
+        disabled: false,
+    },
+    {
+        value: 'shaol',
+        label: '秃子黄',
+        disabled: false,
+    },
+    {
+        value: 'qixiu',
+        label: '兔兔粉',
+        disabled: false,
+    },
+    {
+        value: 'wudu',
+        label: '蛇哥紫',
+        disabled: false,
+    },
+    {
+        value: 'gaib',
+        label: '天狗黄',
+        disabled: false,
+    },
+    {
+        value: 'lingx',
+        label: '野猪红',
+        disabled: false,
+    },
+    {
+        value: 'yant',
+        label: '算卦紫',
+        disabled: false,
+    },
+    {
+        value: 'yaoz',
+        label: '狍子绿',
+        disabled: false,
+    },
+    {
+        value: 'tang',
+        label: '熊猫蓝',
+        disabled: false,
+    },
+    {
+        value: 'cangy',
+        label: '王八红',
+        disabled: false,
+    },
+    {
+        value: 'badao',
+        label: '貂皮紫',
+        disabled: false,
+    },
+    {
+        value: 'daoz',
+        label: '鹦鹉蓝',
+        disabled: false,
+    },
+    {
+        value: 'wanling',
+        label: '乘黄黄',
+        disabled: false
+    }
+];
