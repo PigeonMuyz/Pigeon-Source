@@ -1,5 +1,5 @@
 # 使用一个基础的 Node 镜像
-FROM node:current-bullseye
+FROM node:21.5-alpine
 
 # 设置工作目录
 WORKDIR /usr/src/app
