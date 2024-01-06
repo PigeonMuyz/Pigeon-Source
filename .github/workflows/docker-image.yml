@@ -25,5 +25,5 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: PigeonSource:nighty
+        tags: pigeon-source:nighty
 
