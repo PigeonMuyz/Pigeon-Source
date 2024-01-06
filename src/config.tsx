@@ -73,7 +73,7 @@ export const starfolder = [
             {
                 title: "Pigeon Git",
                 comments: "Pigeon自建的代码仓库",
-                icon: "",
+                icon: <SiGitea style={{ fontSize: 40 }}/>,
                 urls:[
                     {
                         country: "China",
