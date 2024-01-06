@@ -4,15 +4,16 @@ FROM node:21.5-alpine
 # 设置工作目录
 WORKDIR /usr/src/app
 
-# 复制 package.json 和 pnpm-lock.yaml 文件，优先安装依赖以提高构建速度
-COPY package*.json pnpm-lock.yaml ./
+# 复制所有项目文件到工作目录
+COPY . .
+# # 复制 package.json 和 pnpm-lock.yaml 文件，优先安装依赖以提高构建速度
+# COPY package*.json pnpm-lock.yaml ./
 
 # 安装所有依赖（包括 devDependencies）
 RUN npm install -g pnpm && \
     pnpm install --production
 
-# 复制所有项目文件到工作目录
-COPY . .
+
 
 # # 构建应用
 # RUN npm run build
