@@ -33,4 +33,4 @@ RUN npm install -g pnpm && \
 EXPOSE 8000
 
 # 定义默认的启动命令
-CMD [“npm”, “start”]
+CMD [“npm”, “dev”]
