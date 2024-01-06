@@ -2,7 +2,7 @@
   "private": true,
   "author": "清晨 <muyz0319@icloud.com>",
   "scripts": {
-    "dev": "umi dev",
+    "dev": "umi dev --prod",
     "build": "umi build",
     "postinstall": "umi setup",
     "setup": "umi setup",
