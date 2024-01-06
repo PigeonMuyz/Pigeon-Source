@@ -34,7 +34,7 @@ const CustomCard: React.FC<CustomCardProps> = ({ title,type, urls, origin }) => 
         <Flex wrap={'wrap'} gap={'middle'} style={{ marginLeft: 10 }}>
             {urls.map((item, index) => {
                 let buttonHref = item.urls.find((urlItem: UrlItem) => {
-                    if (item.type === 'pigeonUni') {
+                    if (type === 'pigeonUni') {
                         if (origin.includes('www.muyz.xyz')) {
                             return urlItem.country === 'Tokyo';
                         } else if (origin.includes('api.muyz')) {
