@@ -21,6 +21,7 @@ interface StarItem {
 
 interface CustomCardProps {
     title: string;
+    type: string;
     urls: StarItem['urls'];
     origin: string;
 }
@@ -28,17 +29,15 @@ interface CustomCardProps {
 const cardStyle = { width: 300, margin: 10 };
 const {origin} = window.location
 
-const CustomCard: React.FC<CustomCardProps> = ({ title, urls, origin }) => (
+const CustomCard: React.FC<CustomCardProps> = ({ title,type, urls, origin }) => (
     <Card hoverable style={cardStyle} title={title}>
         <Flex wrap={'wrap'} gap={'middle'} style={{ marginLeft: 10 }}>
             {urls.map((item, index) => {
                 let buttonHref = item.urls.find((urlItem: UrlItem) => {
-                    if (item.type === 'pigeonUni') {
-                        if (origin.includes('www.muyz.xyz')) {
-                            return urlItem.country === 'Tokyo';
-                        } else if (origin.includes('api.muyz')) {
-                            return urlItem.country === 'China';
-                        }
+                    if (origin.includes('www.muyz.xyz')) {
+                        return urlItem.country === 'Tokyo';
+                    } else if (origin.includes('api.muyz')) {
+                        return urlItem.country === 'China';
                     }
                     return urlItem.country === 'default';
                 });
@@ -58,7 +57,7 @@ const CustomCard: React.FC<CustomCardProps> = ({ title, urls, origin }) => (
                                 </div>
                                 {/* 解释性文字 */}
                                 <Flex vertical align="flex-start" justify="center" style={{ marginLeft: 5 }}>
-                                    <Typography.Text>{item.title}</Typography.Text>
+                                    <Typography.Text>{item.title}{(type ==='pigeonUni' ? (buttonHref.country === 'China' ? "（国内）":buttonHref.country ==='Tokyo' ? "（东京）":"（内部）"):null)}</Typography.Text>
                                     <Typography.Text type={'secondary'} style={{ fontSize: 12 }}>{item.comments}</Typography.Text>
                                 </Flex>
                             </Flex>
@@ -78,6 +77,7 @@ const HomePage : React.FC = () =>{
             {starfolder.map((item, index) => (
                 <CustomCard key={index}
                             title={item.title}
+                            type={item.type||''}
                             // @ts-ignore
                             urls={item.urls}
                             origin={origin}/>
