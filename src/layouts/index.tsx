@@ -1,5 +1,20 @@
 import { Link, Outlet, useLocation } from 'umi';
-import {Button, ConfigProvider, Layout, Menu, MenuProps, Space, Image, message, Affix, theme, Select, Flex} from 'antd';
+import {
+    Button,
+    ConfigProvider,
+    Layout,
+    Menu,
+    MenuProps,
+    Space,
+    Image,
+    message,
+    Affix,
+    Typography,
+    theme,
+    Select,
+    Flex,
+    Upload, QRCode
+} from 'antd';
 import FooterBar from "@/components/index/footerBar";
 import {SiGitea, SiGithub} from "react-icons/si";
 import React, {useEffect, useState} from "react";
@@ -20,7 +35,9 @@ const App : React.FC = () => {
     const themes = jxerThemes;
     const [theme, setTheme] = useState(themes[0].theme);
     const [selectValue, setSelectValue] = useState('changg');
-    const { token } = useToken();
+    // 获取pathname
+    const {pathname} = useLocation();
+    const {token} = useToken();
     const [menuSelect, setMenuSelect] = useState('index');
 
     const [collapsed, setCollapsed] = useState(false);
@@ -35,8 +52,8 @@ const App : React.FC = () => {
     useEffect(() => {
         // 在小屏幕上自动折叠
         // setCollapsed(isMobile);
-        if (isMobile){
-            message['info']("推荐切换到电脑端或者电脑模式体验完整功能",2)
+        if (isMobile && !pathname.includes("jx3api")) {
+            message['info']("推荐切换到电脑端或者电脑模式体验完整功能", 2)
         }
     }, [isMobile]);
 
@@ -53,7 +70,7 @@ const App : React.FC = () => {
             }
         }
     }, [themes]);
-    let options=themeSelect;
+    let options = themeSelect;
     let menuItem = [
         {
             key: "index",
@@ -93,8 +110,8 @@ const App : React.FC = () => {
         }
     ]
     const location = useLocation();
-    let buttonStyle = { paddingLeft: 7, paddingRight: 7 };
-    let iconStyle = { marginTop: 1, fontSize: 18 };
+    let buttonStyle = {paddingLeft: 7, paddingRight: 7};
+    let iconStyle = {marginTop: 1, fontSize: 18};
 
     function themeChanged(value: any, option: any) {
         const foundObject: any = jxerThemes.find(item => item.key === value) || jxerThemes[0];
@@ -102,33 +119,96 @@ const App : React.FC = () => {
         setTheme(foundObject.theme);
         setSelectValue(value); // 更新Select的值
     }
+
     const onClick: MenuProps['onClick'] = (e) => {
-        switch (e.key){
+        switch (e.key) {
             case "index":
                 break;
             case "jx3search":
-                message["info"]("即将到来",2);
+                message["info"]("即将到来", 2);
                 setMenuSelect("index");
                 break;
             case "music":
-                message["info"]("即将到来",2);
+                message["info"]("即将到来", 2);
                 setMenuSelect("index");
                 break;
             case "video":
-                message["info"]("即将到来",2);
+                message["info"]("即将到来", 2);
                 setMenuSelect("index");
                 break;
             case "blog":
-                message["info"]("即将到来",2);
+                message["info"]("即将到来", 2);
                 setMenuSelect("index");
                 break;
             case "help":
-                message["info"]("即将到来",2);
+                message["info"]("即将到来", 2);
                 setMenuSelect("index");
                 break;
         }
         // setMenuSelect(e.key);
     };
+
+    //链接包含jx3api就渲染这个
+    if (pathname.includes('jx3api')) {
+        return (
+            <Layout>
+                <Content>
+                    <Outlet />
+                </Content>
+                {/* 脚注（必带！） */}
+                <Footer style={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    alignItems: 'center',
+                    height: '120px',
+                    paddingTop: '0',
+                    paddingRight: '5px',
+                }}>
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', height: '100%' }}>
+                        <Typography.Text style={{ marginBottom: 0, alignSelf: 'flex-end' }}>
+                            Pigeon Universal
+                        </Typography.Text>
+                        <Typography.Text style={{ marginTop: 0, alignSelf: 'flex-start' }}>
+                            Design by 飞龙在天 渡清欢
+                        </Typography.Text>
+                    </div>
+                    <QRCode value={'https://www.muyz.xyz'} size={80} bordered={false} style={{ marginLeft: '5px', marginTop: '30px' }}/>
+                </Footer>
+            </Layout>
+        );
+    }
+
+    // 宽屏显示元素
+    let desktopScreen = <Space align={'center'} size={100}>
+        <div className={'logo'} style={{marginLeft: 30}}>
+            <Image
+                width={70}
+                height={50}
+                src={logo}
+            />
+        </div>
+        <div style={{ marginLeft: 'auto' }}>
+            <Menu
+                mode={'horizontal'}
+                selectedKeys={[menuSelect]}
+                items={menuItem}
+                onClick={onClick}
+                inlineCollapsed={collapsed}
+            />
+        </div>
+    </Space>;
+
+    let inOutButton = <Flex justify={'end'} gap={'small'} style={{marginLeft:'auto'}}>
+        <Button>
+            导出
+        </Button>
+        <Upload>
+            <Button>
+                导入
+            </Button>
+        </Upload>
+    </Flex>;
+
     return (
         <ConfigProvider
             // @ts-ignore
@@ -136,34 +216,18 @@ const App : React.FC = () => {
             <Layout>
                 <Affix>
                     <Header style={{width: '100%', display: 'flex', alignItems: 'center'}}>
-                        {isMobile ? null :
-                            (
-                                <Space align={'center'} size={100}>
-                                    <div className={'logo'} style={{ marginLeft: 30 }}>
-                                        <Image
-                                            width={70}
-                                            height={50}
-                                            src={logo}
-                                        />
-                                    </div>
-                                    <Menu
-                                        mode={'horizontal'}
-                                        selectedKeys={[menuSelect]}
-                                        items={menuItem}
-                                        onClick={onClick}
-                                        inlineCollapsed={collapsed}
-                                    />
-                                </Space>
-                            )
-                        }
-                        <Flex justify={'start'} gap={'small'} style={{ marginLeft: 'auto' }}>
-                            <Select value={selectValue} options={options} style={{ width: 100  }} onChange={(value, option) => themeChanged(value,option)} defaultValue={'changg'}/>
-                            <Button style={buttonStyle} href={'https://github.com/pigeonmuyz'}><SiGithub style={iconStyle}/></Button>
+                        {isMobile ? null: desktopScreen}
+                        {inOutButton}
+                        <Flex justify={'start'} gap={'small'} style={{marginLeft: 'auto'}}>
+                            <Select value={selectValue} options={options} style={{width: 100}}
+                                    onChange={(value, option) => themeChanged(value, option)} defaultValue={'changg'}/>
+                            <Button style={buttonStyle} href={'https://github.com/pigeonmuyz'}><SiGithub
+                                style={iconStyle}/></Button>
                             {/*<Button style={buttonStyle} ><SiGitea style={iconStyle}/></Button>*/}
                         </Flex>
                     </Header>
                 </Affix>
-                <Content style={{ marginLeft: 10, marginRight: 10, marginTop: 20 }}>
+                <Content style={{marginLeft: 10, marginRight: 10, marginTop: 20}}>
                     <Outlet/>
                 </Content>
                 <Footer>
