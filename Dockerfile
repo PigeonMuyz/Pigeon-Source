@@ -26,6 +26,7 @@ WORKDIR /usr/src/app
 # 从上一个阶段复制构建好的应用和依赖
 COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/node_modules ./node_modules
+COPY --from=build /usr/src/app/package.json ./
 
 # 暴露应用端口
 EXPOSE 8000
