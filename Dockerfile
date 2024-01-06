@@ -6,7 +6,6 @@ WORKDIR /usr/src/app
 
 # 复制 package.json 和 pnpm-lock.yaml 文件，优先安装依赖以提高构建速度
 COPY package*.json pnpm-lock.yaml ./
-RUN npm ci --production
 
 # 安装所有依赖（包括 devDependencies）
 RUN npm install -g pnpm && \
