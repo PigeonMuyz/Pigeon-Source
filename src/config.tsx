@@ -1,10 +1,19 @@
 // 书签控制
 import {HiOutlineLibrary} from "react-icons/hi";
-import {SiAntdesign, SiGitea, SiGithub, SiReddit, SiRedis, SiTraefikproxy, SiWindows95} from "react-icons/si";
+import {
+    SiAntdesign,
+    SiGitea,
+    SiGithub,
+    SiReddit,
+    SiRedis,
+    SiTencentqq,
+    SiTraefikproxy,
+    SiWindows95
+} from "react-icons/si";
 import {TbBrandOnedrive, TbJson} from "react-icons/tb";
 import {BsCupHot} from "react-icons/bs";
 import {MdOndemandVideo} from "react-icons/md";
-import {FaRegImages, FaStackOverflow} from "react-icons/fa6";
+import {FaRegImages, FaStackOverflow, FaSteam} from "react-icons/fa6";
 import {IoLogoOctocat} from "react-icons/io5";
 import {FaBookReader} from "react-icons/fa";
 
@@ -288,6 +297,45 @@ export const starfolder = [
                     {
                         country: "default",
                         url: "https://next.itellyou.cn"
+                    },
+                ]
+            },
+        ]
+    },
+    {
+        title: "游戏区",
+        type: "gamer",
+        urls: [
+            {
+                title: "Steam",
+                comments: "Steam官网！！！",
+                icon: <FaSteam style={{ fontSize: 40 }}/>,
+                urls:[
+                    {
+                        country: "default",
+                        url: "https://store.steampowered.com"
+                    },
+                ]
+            },
+            {
+                title: "网易游戏",
+                comments: "网易游戏的官网",
+                icon: '',
+                urls:[
+                    {
+                        country: "default",
+                        url: "https://game.163.com"
+                    },
+                ]
+            },
+            {
+                title: "腾讯游戏",
+                comments: "该*的南极**",
+                icon: <SiTencentqq style={{ fontSize: 40 }}/>,
+                urls:[
+                    {
+                        country: "default",
+                        url: "https://game.qq.com"
                     },
                 ]
             },

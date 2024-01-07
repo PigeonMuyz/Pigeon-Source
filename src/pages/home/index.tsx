@@ -1,6 +1,8 @@
 import {Button, Card, Flex,Typography, Image} from "antd";
 import {useLocation} from "umi";
 import { starfolder } from "@/config";
+import {FaInternetExplorer} from "react-icons/fa6";
+import {useEffect, useState} from "react";
 
 interface UrlItem {
     country: string;
@@ -26,12 +28,13 @@ interface CustomCardProps {
     origin: string;
 }
 
-const cardStyle = { width: 300, margin: 10 };
+
+const cardStyle = { width: 'auto', margin: 10,height: "auto" };
 const {origin} = window.location
 
 const CustomCard: React.FC<CustomCardProps> = ({ title,type, urls, origin }) => (
     <Card hoverable style={cardStyle} title={title}>
-        <Flex wrap={'wrap'} gap={'middle'} style={{ marginLeft: 10 }}>
+        <Flex vertical={true} wrap={'wrap'} gap={'middle'} style={{ marginLeft: 10 }}>
             {urls.map((item, index) => {
                 let buttonHref = item.urls.find((urlItem: UrlItem) => {
                     if (type === 'pigeonUni') {
@@ -48,14 +51,12 @@ const CustomCard: React.FC<CustomCardProps> = ({ title,type, urls, origin }) => 
                 if (buttonHref) {
                     return (
                         <Button key={index} size="small" style={{ height: 60, paddingTop: 5, paddingBottom: 5 }} href={buttonHref.url} target="_blank">
-                            <Flex justify="space-between">
+                            <Flex justify="start">
                                 {/* 图标 */}
-                                <div style={{ width: 50, height: 30 }}>
+                                <div style={{ width: 50, height: 30,marginTop:2 }}>
                                     {item.icon ? (
                                         item.icon
-                                    ) : (
-                                        <Image src={buttonHref.url + '/favicon.ico'} width={40} preview={false} />
-                                    )}
+                                    ) : <FaInternetExplorer style={{ fontSize: 40 }} />}
                                 </div>
                                 {/* 解释性文字 */}
                                 <Flex vertical align="flex-start" justify="center" style={{ marginLeft: 5 }}>
@@ -75,7 +76,7 @@ const CustomCard: React.FC<CustomCardProps> = ({ title,type, urls, origin }) => 
 
 const HomePage : React.FC = () =>{
     return(
-        <Flex justify={"center"} align={"start"} wrap="wrap">
+        <Flex justify={"center"} align={"start"} wrap="wrap" >
             {starfolder.map((item, index) => (
                 <CustomCard key={index}
                             title={item.title}

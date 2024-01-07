@@ -182,6 +182,7 @@ const App : React.FC = () => {
     let desktopScreen = <Space align={'center'} size={100}>
         <div className={'logo'} style={{marginLeft: 30}}>
             <Image
+                preview={false}
                 width={70}
                 height={50}
                 src={logo}
@@ -217,7 +218,7 @@ const App : React.FC = () => {
                 <Affix>
                     <Header style={{width: '100%', display: 'flex', alignItems: 'center'}}>
                         {isMobile ? null: desktopScreen}
-                        {inOutButton}
+                        {/*{inOutButton}*/}
                         <Flex justify={'start'} gap={'small'} style={{marginLeft: 'auto'}}>
                             <Select value={selectValue} options={options} style={{width: 100}}
                                     onChange={(value, option) => themeChanged(value, option)} defaultValue={'changg'}/>
