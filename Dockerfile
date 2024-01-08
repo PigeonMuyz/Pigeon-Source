@@ -29,4 +29,4 @@ COPY --from=build /usr/src/app/package.json ./
 EXPOSE 8000
 
 # 定义默认的启动命令
-CMD [“npm”, “run”, "prod"]
+CMD [“npm”, “run”, “prod”]
