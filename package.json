@@ -5,6 +5,7 @@
     "dev": "umi dev --prod",
     "build": "umi build",
     "postinstall": "umi setup",
+    "start:prod": "node dist",
     "setup": "umi setup",
     "start": "npm run dev"
   },
