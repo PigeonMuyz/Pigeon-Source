@@ -19,6 +19,9 @@ export default defineConfig({
       pathRewrite:{"^/gold":''}
     }
   },
+  mfsu: {
+    strategy: 'eager',
+  },
   npmClient: 'pnpm',
   title: 'Pigeon Source',
 });
