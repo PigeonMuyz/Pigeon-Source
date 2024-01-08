@@ -9,12 +9,12 @@ export default defineConfig({
   ],
   proxy:{
     '/api':{
-      target: 'http://pigeon-server-developer:25555/api',
+      target: 'http:/192.168.6.254:25555/api',
       changeOrigin: true,
       pathRewrite:{"^/api":''}
     },
     '/gold':{
-      target: 'http://pigeon-server-developer:25555/gold',
+      target: 'http://192.168.6.254:25555/gold',
       changeOrigin: true,
       pathRewrite:{"^/gold":''}
     }
