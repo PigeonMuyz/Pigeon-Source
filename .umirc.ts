@@ -20,7 +20,7 @@ export default defineConfig({
     }
   },
   mfsu: {
-    strategy: 'eager',
+    esbuild: true,
   },
   npmClient: 'pnpm',
   title: 'Pigeon Source',
