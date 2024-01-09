@@ -169,7 +169,7 @@ const App : React.FC = () => {
                             Pigeon Universal
                         </Typography.Text>
                         <Typography.Text style={{ marginTop: 0, alignSelf: 'flex-start' }}>
-                            Design by 飞龙在天 渡清欢
+                            Design by 找情缘找A了的鸽子渡清欢
                         </Typography.Text>
                     </div>
                     <QRCode value={'https://www.muyz.xyz'} size={80} bordered={false} style={{ marginLeft: '5px', marginTop: '30px' }}/>
