@@ -21,6 +21,8 @@ interface OriginalDataItem {
     content: string;
 }
 
+// 推荐宽度1200
+
 /**
  * 团队招募组件
  */
