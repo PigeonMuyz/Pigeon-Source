@@ -10,7 +10,7 @@ export default defineConfig({
   ],
   proxy:{
     '/api':{
-      target: 'http:/api.muyz.xyz:25555/api',
+      target: 'http://api.muyz.xyz:25555/api',
       changeOrigin: true,
       pathRewrite:{"^/api":''}
     },
