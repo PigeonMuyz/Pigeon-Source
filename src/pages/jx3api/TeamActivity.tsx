@@ -37,7 +37,7 @@ const TeamActivitys : React.FC = () =>{
     async function getTeamActivityData() {
         let url = `/api/teamactivity?`;
         if (server) {
-            url += `&server=${server}`;
+            url += `server=${server}`;
         }
         if (server && keyword) {
             url += `&keyword=${keyword}`;
