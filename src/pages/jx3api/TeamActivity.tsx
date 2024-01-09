@@ -4,6 +4,9 @@ import {useSearchParams} from 'umi';
 import {netAxios} from '@/utils/NetAxios';
 import moment from 'moment';
 
+/**
+ * 定义返回值数据结构
+ */
 interface OriginalDataItem {
     activityId: number;
     activity: string;
@@ -22,18 +25,23 @@ interface OriginalDataItem {
  * 团队招募组件
  */
 const TeamActivitys : React.FC = () =>{
-    // 提取链接中关键字
+    // 调用UMI API获取路由中的值
     const [searchParams, setSearchParams] = useSearchParams();
+    // 初始化网络请求对象
     const net = new netAxios();
-    // 链接中的关键字/xxxx?keyword=*
     const keyword = searchParams.get('keyword');
-    const nondict = searchParams.get('nondict');
+    let nondict = searchParams.get('nondict');
+    nondict = nondict ? JSON.parse(nondict) : null;
     const server = searchParams.get('server');
     const [originalData,setOriginalData] = useState([])
+    /**
+     * 只在初始化渲染时运行
+     */
     useEffect(() => {
         getTeamActivityData();
     }, []);
 
+    // 异步获取招募数据
     async function getTeamActivityData() {
         let url = `/api/teamactivity?`;
         if (server) {
@@ -42,8 +50,8 @@ const TeamActivitys : React.FC = () =>{
         if (server && keyword) {
             url += `&keyword=${keyword}`;
         }
-        let teamActivity = await net.get(url);     
-        let filteredData = nondict ? teamActivity.data.filter(item => !nondict.some(str => item['content'].includes(str))) : teamActivity.data;
+        let teamActivity = await net.get(url);
+        let filteredData = nondict ? teamActivity.data.data.filter(item => !nondict.some(str => item['content'].includes(str))) : teamActivity.data.data;
         setOriginalData(filteredData);
     }
     const columns = [
@@ -58,21 +66,23 @@ const TeamActivitys : React.FC = () =>{
             dataIndex: 'level',
             key: 'level',
             align: 'center',
+            width: 80,
         },
         {
             title: '队长',
             dataIndex: 'leader',
             key: 'leader',
             align: 'center',
+            width: 180,
         },
         {
             title: '人数',
-            dataIndex: 'person',
             key: 'person',
             align: 'center',
+            width: 70,
             render: (item:any) =>{
                 return(
-                    <>{item.number}/{item.maxnumber}</>
+                    <>{item.number}/{item.maxNumber}</>
                 );
             }
         },
@@ -87,6 +97,7 @@ const TeamActivitys : React.FC = () =>{
             dataIndex: 'createTime',
             key: 'createTime',
             align: 'center',
+            width: 120,
             render: (createTime:any) => {
                 return moment.unix(createTime).format('YYYY-MM-DD HH:mm:ss');
             }
