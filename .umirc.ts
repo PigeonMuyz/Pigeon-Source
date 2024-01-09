@@ -7,6 +7,7 @@ export default defineConfig({
     { path: "/jx3api/characterinfo", component: "./jx3api/CharacterInfo" },
     { path: "/jx3api/itemprice", component: "./jx3api/ItemPrice" },
     { path: "/jx3api/teamactivity", component: "./jx3api/TeamActivity" },
+    { path: "/jx3api/appearanceprice", component: "./jx3api/AppearancePrice" },
   ],
   proxy:{
     '/api':{
