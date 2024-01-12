@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Table} from 'antd';
+import {Table, Tag} from 'antd';
 import {useSearchParams} from 'umi';
 import {netAxios} from '@/utils/NetAxios';
 import moment from 'moment';
@@ -53,7 +53,8 @@ const TeamActivitys : React.FC = () =>{
             url += `&keyword=${keyword}`;
         }
         let teamActivity = await net.get(url);
-        let filteredData = nondict ? teamActivity.data.data.filter(item => !nondict.some(str => item['content'].includes(str))) : teamActivity.data.data;
+        // @ts-ignore
+        let filteredData = nondict ? teamActivity.data.data.filter(item => ! nondict.some(str => item['content'].includes(str))) : teamActivity.data.data;
         setOriginalData(filteredData);
     }
     const columns = [
@@ -76,6 +77,16 @@ const TeamActivitys : React.FC = () =>{
             key: 'leader',
             align: 'center',
             width: 180,
+            render: (item:any) =>{
+                const regex = /亦.{2}?/;
+                if (!regex.test(item)) {
+                    return item;
+                }else{
+                    return (
+                        <>{item}<Tag bordered={false} color={'error'}>高风险</Tag></>
+                    );
+                }
+            }
         },
         {
             title: '人数',
