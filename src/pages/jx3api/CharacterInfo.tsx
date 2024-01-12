@@ -69,7 +69,7 @@ const CharacterInfoPage : React.FC = () =>{
                     // }
                 >
                     <Meta
-                        avatar={<Avatar shape={"square"} size={45} src="https://qdla.pvp.xoyo.com/prod/avatar/tmp/3ec4d6687cd442328fda86d472c47bfe/avatar.jpg/9d4597831b3341139cd3d7d5fcb52781.jpg" />}
+                        avatar={<Avatar shape={"square"} size={45} src={personAvatar} />}
                         title={
                             <div>
                             <Flex vertical>
