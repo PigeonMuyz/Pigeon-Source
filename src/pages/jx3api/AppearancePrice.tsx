@@ -29,7 +29,8 @@ const AppearancePrice: React.FC = () => {
         setOriginalData(appearancePrice.data);
         // 筛选出你需要的数据
         let clothesData = appearancePrice.data.data.flat();
-        let filteredData = clothesData.filter(item => 
+        // @ts-ignore
+        let filteredData = clothesData.filter(item =>
             ["出售","正出","收购","想出","想收"].includes(saleSelect[item.sales-1])
         );
         setTableSource(filteredData);
@@ -79,6 +80,7 @@ const AppearancePrice: React.FC = () => {
         },
     ];
     //假设下面的data=返回来的data
+    // @ts-ignore
     const { name, alias, view, date, data, row } = originalData;
     return (
         <div>
@@ -103,6 +105,7 @@ const AppearancePrice: React.FC = () => {
             <Table
                 style={{ marginLeft: 15, marginRight: 15, marginTop: 5 }}
                 dataSource={tableSource}
+                // @ts-ignore
                 columns={columns}
                 pagination={false}
                 bordered={true}
