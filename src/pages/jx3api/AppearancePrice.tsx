@@ -81,7 +81,7 @@ const AppearancePrice: React.FC = () => {
     ];
     //假设下面的data=返回来的data
     // @ts-ignore
-    const { name, alias, view, date, data, row } = originalData;
+    const { name, alias, view, date, row } = originalData;
     return (
         <div>
             <Flex style={{ justifyContent: 'center' }}>
